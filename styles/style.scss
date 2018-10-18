@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+$primarFont: 'Raleway';
+$backColor: rgba(17, 17, 37, 0.877);
+$basicWhite: rgb(230, 219, 219);
+$pinkyColor: rgb(187, 45, 68);
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: $primarFont;
+    background-color: $backColor;
+    color: $basicWhite;
+}
+
+.app {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 5px double $basicWhite;
+    height: auto;
+    min-height: 70vh;
+    padding: 30px;
+
+    .searchButton, .randomButton {
+        background-color: transparent;
+        border: 1.5px solid $pinkyColor;
+        color: $basicWhite;
+    }
+
+    .inputs {
+        display: flex;
+        flex-direction: row;
+        margin: 30px 0 30px;
+    
+        .nick, .time, .players {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1.3px solid $pinkyColor;
+            width: 140px;
+            transition: all 0.6s ease-in-out;
+            color: $basicWhite;
+            text-align: center;
+            &::-webkit-input-placeholder {
+                color: rgba(133, 133, 197, 0.719);
+            }
+            &:hover {
+                width: 180px;
+                &::-webkit-input-placeholder {
+                    transition: 1.3s;
+                    color: transparent;
+                }
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+    
+    .inputs > * {
+        margin: 0 10px;
+    }
+   
+    .results {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 70vw;
+
+        .randomSection {
+            display: none;
+            width: auto;
+            letter-spacing: 2px;
+            text-align: center;
+
+            > button {
+                width: 20px;
+                height: 20px;
+                border: 2px solid $pinkyColor;
+                color: $basicWhite;
+                background-color: $backColor;
+                margin: 0 10px;
+            }
+        }
+        
+        span:first-of-type {
+            color: $pinkyColor;
+            font-size: 30px;
+            transition: all 0.5s ease-in-out;
+
+            &:hover {
+                font-size: 35px;
+                letter-spacing: 1px;
+            }
+        }
+
+        #gameCollection {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .gameBox {
+            margin: 0;
+            width: 45%;
+        }
+
+        .textInfo {
+            display: flex;
+            flex-direction: column;
+            margin: 3px 0;
+        }
+
+        .wholeGameInfo {
+            display: flex;
+            flex-direction: row;
+            margin: 40px 30px;
+            background-color: rgba(17, 17, 37, 0.103);
+        }
+    }
+
+    .gamePhoto {
+        height: 180px;
+        width: 135px;
+        margin-right: 20px;
+    }
+}
+
