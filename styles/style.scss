@@ -70,9 +70,11 @@ body {
 
         .randomSection {
             display: none;
+            align-items: center;
             width: auto;
             letter-spacing: 2px;
             text-align: center;
+            margin: 50px 0 100px;
 
             > button {
                 width: 20px;
@@ -82,6 +84,11 @@ body {
                 background-color: $backColor;
                 margin: 0 10px;
             }
+        }
+
+        .totalTime {
+            font-size: 50px;
+            color: $pinkyColor;
         }
         
         span:first-of-type {
@@ -97,29 +104,35 @@ body {
 
         #gameCollection {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: center;
             flex-wrap: wrap;
             width: 100%;
+
+            .singleGame {
+                display: flex;
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                margin-bottom: 30px;
+                font-size: 16.5px;
+
+                .gameTime {
+                    font-size: 30px;
+                    color: $pinkyColor;
+                }
+
+                .buttonTime {
+                    background-color: $backColor;
+                    border: 2px solid $pinkyColor;
+                    height: 40px;
+                    width: 40px;
+                }
+            }
         }
 
-        .gameBox {
-            margin: 0;
-            width: 45%;
-        }
 
-        .textInfo {
-            display: flex;
-            flex-direction: column;
-            margin: 3px 0;
-        }
-
-        .wholeGameInfo {
-            display: flex;
-            flex-direction: row;
-            margin: 40px 30px;
-            background-color: rgba(17, 17, 37, 0.103);
-        }
     }
 
     .gamePhoto {

@@ -59,12 +59,19 @@ buttonSearch.addEventListener('click', function(event){
             
                 fittingArray.push(itemsArray[0][i]);
             }
-
-            randomSection.style.display = 'flex';
         } 
+
+        randomSection.style.display = 'flex';
 
         buttonRandom.addEventListener('click', findMe);
         buttonNotPlayed.addEventListener('click', notPlay);
+
+        document.addEventListener('click',function(e){
+            if(e.target.className == 'buttonTime'){
+                console.log(e.target);
+                addTimes(e.target);
+            }
+        })
     }
    
 });
@@ -138,18 +145,16 @@ function buildStructure(timeOfGame, name, playersMin, playersMax, numPlays, imgS
     title = document.createElement('p');
     time = document.createElement('p');
     img = document.createElement('img');
-    gameBox = document.createElement('div');
-    blockImage = document.createElement('div');
-    wholeGameInfo = document.createElement('div');
-    textInfo = document.createElement('div');
     playersInfo = document.createElement('p');
     numOfPlaysInfo = document.createElement('p');
+    singleGame = document.createElement('li');
+    buttonTime = document.createElement('button');
 
     title.classList.add('gameTitle');
-    gameBox.classList.add('gameBox');
-    textInfo.classList.add('textInfo');
+    time.classList.add('gameTime');
     img.classList.add('gamePhoto');
-    wholeGameInfo.classList.add('wholeGameInfo');
+    singleGame.classList.add('singleGame');
+    buttonTime.classList.add('buttonTime');
 
     time.innerHTML = timeOfGame + 'min';
     title.innerHTML = name;
@@ -159,20 +164,32 @@ function buildStructure(timeOfGame, name, playersMin, playersMax, numPlays, imgS
         numOfPlaysInfo.innerHTML = 'Number of plays: ' + numPlays;
     } else {
         numOfPlaysInfo.innerHTML = 'Ouch, you didn\'t play this one!';
+        numOfPlaysInfo.style.color = 'rgb(187, 45, 68)';
+        numOfPlaysInfo.style.fontSize = '22px';
     }
 
     img.setAttribute('src', imgSrc);
 
-    blockImage.appendChild(img);
-    textInfo.appendChild(title);
-    textInfo.appendChild(time);
-    textInfo.appendChild(playersInfo);
-    textInfo.appendChild(numOfPlaysInfo);
-    wholeGameInfo.appendChild(textInfo);
-    wholeGameInfo.insertBefore(blockImage, wholeGameInfo.firstChild);
-    gameBox.appendChild(wholeGameInfo);
-    collecionField.appendChild(gameBox);
+    singleGame.appendChild(img);
+    singleGame.appendChild(title);
+    singleGame.appendChild(time);
+    singleGame.appendChild(playersInfo);
+    singleGame.appendChild(numOfPlaysInfo);
+    singleGame.appendChild(buttonTime);
+
+    collecionField.appendChild(singleGame);
 }
+
+function addTimes(button) {
+
+    button.style.backgroundColor = 'rgb(187, 45, 68)';
+
+};
+
+/*document.addEventListener('click', function(e){
+    if(e.target && e.target.className == 'buttonTime'){
+        addTimes();
+ })*/
 
 
 

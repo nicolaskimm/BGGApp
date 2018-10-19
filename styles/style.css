@@ -98,9 +98,13 @@ body {
 
 .app .results .randomSection {
   display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: auto;
   letter-spacing: 2px;
   text-align: center;
+  margin: 50px 0 100px;
 }
 
 .app .results .randomSection > button {
@@ -110,6 +114,11 @@ body {
   color: #e6dbdb;
   background-color: rgba(17, 17, 37, 0.877);
   margin: 0 10px;
+}
+
+.app .results .totalTime {
+  font-size: 50px;
+  color: #bb2d44;
 }
 
 .app .results span:first-of-type {
@@ -128,10 +137,10 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -140,32 +149,34 @@ body {
   width: 100%;
 }
 
-.app .results .gameBox {
-  margin: 0;
-  width: 45%;
-}
-
-.app .results .textInfo {
+.app .results #gameCollection .singleGame {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 3px 0;
-}
-
-.app .results .wholeGameInfo {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  margin: 40px 30px;
-  background-color: rgba(17, 17, 37, 0.103);
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 30px;
+  font-size: 16.5px;
+}
+
+.app .results #gameCollection .singleGame .gameTime {
+  font-size: 30px;
+  color: #bb2d44;
+}
+
+.app .results #gameCollection .singleGame .buttonTime {
+  background-color: rgba(17, 17, 37, 0.877);
+  border: 2px solid #bb2d44;
+  height: 40px;
+  width: 40px;
 }
 
 .app .gamePhoto {
