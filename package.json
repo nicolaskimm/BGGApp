@@ -1,0 +1,28 @@
+{
+  "name": "bggapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "dependencies": {
+    "cors-anywhere": "^0.4.1",
+    "cors": "^2.8.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolaskimm/BGGApp.git"
+  },
+  "keywords": [
+    "BGG",
+    "boardgameapp"
+  ],
+  "author": "nicolaskimm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicolaskimm/BGGApp/issues"
+  },
+  "homepage": "https://github.com/nicolaskimm/BGGApp#readme"
+}
