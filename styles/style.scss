@@ -23,10 +23,11 @@ body {
     min-height: 70vh;
     padding: 30px;
 
-    .searchButton, .randomButton {
+    .searchButton, .clearSearch {
         background-color: transparent;
         border: 1.5px solid $pinkyColor;
         color: $basicWhite;
+        outline: none;
     }
 
     .inputs {
@@ -66,7 +67,7 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 70vw;
+        width: 85vw;
 
         .randomSection {
             display: none;
@@ -76,12 +77,9 @@ body {
             text-align: center;
             margin: 50px 0 100px;
 
-            > button {
-                width: 20px;
-                height: 20px;
-                border: 2px solid $pinkyColor;
+            .random, .notPlayed {
+                font-size: 30px;
                 color: $basicWhite;
-                background-color: $backColor;
                 margin: 0 10px;
             }
         }
@@ -104,30 +102,43 @@ body {
 
         #gameCollection {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             justify-content: center;
             flex-wrap: wrap;
             width: 100%;
 
             .singleGame {
                 display: flex;
-                width: 100%;
+                width: 30%;
                 flex-direction: row;
-                justify-content: space-around;
-                align-items: center;
-                margin-bottom: 30px;
-                font-size: 16.5px;
+                margin: 20px;
+                font-size: 13.5px;
+
+                .textInfo {
+                    display: flex;
+                    flex-direction: column;
+                    
+                    >p {
+                        margin-bottom: 10px;
+                    }
+                }
 
                 .gameTime {
-                    font-size: 30px;
+                    font-size: 17px;
                     color: $pinkyColor;
                 }
 
-                .buttonTime {
+                .buttonNotSelected {
                     background-color: $backColor;
                     border: 2px solid $pinkyColor;
                     height: 40px;
                     width: 40px;
+                    outline: none;
+                }
+
+                .buttonSelected {
+                    @extend .buttonNotSelected;
+                    background-color: $pinkyColor;
                 }
             }
         }

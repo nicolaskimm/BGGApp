@@ -5,10 +5,12 @@ timeField = document.querySelector('.time');
 playersField = document.querySelector('.players');
 collecionField = document.getElementById('gameCollection');
 buttonSearch = document.querySelector('.searchButton');
-buttonRandom = document.querySelector('.randomButton');
-buttonNotPlayed = document.querySelector('.btnNotPlayed');
+buttonClear = document.querySelector('.clearSearch');
+buttonRandom = document.querySelector('.random');
+buttonNotPlayed = document.querySelector('.notPlayed');
 paragraphRandom = document.querySelector('.paragraphRandom');
 randomSection = document.querySelector('.randomSection');
+totalTime = document.querySelector('.totalTime');
 itemsArray = [];
 fittingArray = [];
 
@@ -19,7 +21,6 @@ buttonSearch.addEventListener('click', function(event){
     if (event.keyCode = '13') {
         var req, text, xmlDoc, items, timeInput, playersInput;
 
-        changeIcon();
         clearFields();
     
         nickInput = nickField.value;
@@ -38,7 +39,7 @@ buttonSearch.addEventListener('click', function(event){
         itemsArray.push(items);
     
         
-        for (var i = 0 ; i < itemsArray[0].length ; i ++) {
+        for (var i = 0 ; i < itemsArray[0].length-1 ; i ++) {
     
             var playTime, playersMinAmount, playersMaxAmount;
             
@@ -62,19 +63,14 @@ buttonSearch.addEventListener('click', function(event){
         } 
 
         randomSection.style.display = 'flex';
+        totalTime.style.display = 'block';
 
         buttonRandom.addEventListener('click', findMe);
         buttonNotPlayed.addEventListener('click', notPlay);
-
-        document.addEventListener('click',function(e){
-            if(e.target.className == 'buttonTime'){
-                console.log(e.target);
-                addTimes(e.target);
-            }
-        })
-    }
-   
+    }   
 });
+
+buttonClear.addEventListener('click', init);
 
 
 function clearFields() {
@@ -83,17 +79,14 @@ function clearFields() {
     }
 };
 
-function changeIcon() {
-    var xIcon = '<i class="fas fa-times"></i>';
-    buttonSearch.innerHTML = xIcon;
-}
-
 function init() {
-    var searchIcon = '<i class="fas fa-search"></i>';
     clearFields();
-    buttonSearch.innerHTML = searchIcon;
     nickField.value = '';
     timeField.value = '';
+    playersField.value = '';
+
+    randomSection.style.display = 'none';
+    totalTime.style.display = 'none';
 }
 
 function findMe() {
@@ -114,6 +107,7 @@ function findMe() {
     buildStructure(gameTime, gameName, playersMin, playersMax, numOfPlays, gameImgSrc);
 
     paragraphRandom.innerHTML = 'Pick something else';
+    totalTime.style.display = 'none';
 }
 
 function notPlay() {
@@ -137,10 +131,12 @@ function notPlay() {
         }
     }
     randomSection.style.display = 'none';
+    totalTime.style.display = 'block';
 }
 
 function buildStructure(timeOfGame, name, playersMin, playersMax, numPlays, imgSrc) {
     var title, time, img, gameBox, blockImage, wholeGameInfo, textInfo, playersInfo, gameName, gameTime, gameImgSrc, playersMin, playersMax, numOfPlays;
+
 
     title = document.createElement('p');
     time = document.createElement('p');
@@ -149,12 +145,14 @@ function buildStructure(timeOfGame, name, playersMin, playersMax, numPlays, imgS
     numOfPlaysInfo = document.createElement('p');
     singleGame = document.createElement('li');
     buttonTime = document.createElement('button');
+    textInfo = document.createElement('div');
 
     title.classList.add('gameTitle');
     time.classList.add('gameTime');
     img.classList.add('gamePhoto');
     singleGame.classList.add('singleGame');
-    buttonTime.classList.add('buttonTime');
+    buttonTime.classList.add('buttonNotSelected');
+    textInfo.classList.add('textInfo');
 
     time.innerHTML = timeOfGame + 'min';
     title.innerHTML = name;
@@ -165,31 +163,53 @@ function buildStructure(timeOfGame, name, playersMin, playersMax, numPlays, imgS
     } else {
         numOfPlaysInfo.innerHTML = 'Ouch, you didn\'t play this one!';
         numOfPlaysInfo.style.color = 'rgb(187, 45, 68)';
-        numOfPlaysInfo.style.fontSize = '22px';
+        numOfPlaysInfo.style.fontSize = '17px';
     }
 
     img.setAttribute('src', imgSrc);
 
     singleGame.appendChild(img);
-    singleGame.appendChild(title);
-    singleGame.appendChild(time);
-    singleGame.appendChild(playersInfo);
-    singleGame.appendChild(numOfPlaysInfo);
-    singleGame.appendChild(buttonTime);
+    textInfo.appendChild(title);
+    textInfo.appendChild(time);
+    textInfo.appendChild(playersInfo);
+    textInfo.appendChild(numOfPlaysInfo);
+    textInfo.appendChild(buttonTime);
+    singleGame.appendChild(textInfo);
 
+    
     collecionField.appendChild(singleGame);
+
 }
 
 function addTimes(button) {
 
-    button.style.backgroundColor = 'rgb(187, 45, 68)';
+    var parent = button.parentNode;
+    var parentTime = parent.querySelector('.gameTime').innerHTML;
+    var time = parseInt(parentTime.slice(0, parentTime.length - 3));
 
+
+    var total = document.querySelector('.totalTime').innerHTML;
+    var totalP = document.querySelector('.totalTime');
+
+    if (button.className == 'buttonNotSelected') {
+        button.classList.remove('buttonNotSelected');
+        button.classList.add('buttonSelected');
+    
+        totalP.innerHTML = parseInt(total) + time + ' min';
+        
+    } else {
+        button.classList.remove('buttonSelected');
+        button.classList.add('buttonNotSelected');
+
+        totalP.innerHTML = parseInt(total) - time + ' min';
+    }
 };
 
-/*document.addEventListener('click', function(e){
-    if(e.target && e.target.className == 'buttonTime'){
-        addTimes();
- })*/
+document.addEventListener('click', function(e){
+    if (e.target && e.target.className == 'buttonNotSelected' || e.target.className == 'buttonSelected') {
+        addTimes(e.target);
+    }
+ });
 
 
 

@@ -32,10 +32,11 @@ body {
   padding: 30px;
 }
 
-.app .searchButton, .app .randomButton {
+.app .searchButton, .app .clearSearch {
   background-color: transparent;
   border: 1.5px solid #bb2d44;
   color: #e6dbdb;
+  outline: none;
 }
 
 .app .inputs {
@@ -93,7 +94,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 70vw;
+  width: 85vw;
 }
 
 .app .results .randomSection {
@@ -107,12 +108,9 @@ body {
   margin: 50px 0 100px;
 }
 
-.app .results .randomSection > button {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #bb2d44;
+.app .results .randomSection .random, .app .results .randomSection .notPlayed {
+  font-size: 30px;
   color: #e6dbdb;
-  background-color: rgba(17, 17, 37, 0.877);
   margin: 0 10px;
 }
 
@@ -137,10 +135,10 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -153,30 +151,44 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
+  width: 30%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 30px;
-  font-size: 16.5px;
+  margin: 20px;
+  font-size: 13.5px;
+}
+
+.app .results #gameCollection .singleGame .textInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.app .results #gameCollection .singleGame .textInfo > p {
+  margin-bottom: 10px;
 }
 
 .app .results #gameCollection .singleGame .gameTime {
-  font-size: 30px;
+  font-size: 17px;
   color: #bb2d44;
 }
 
-.app .results #gameCollection .singleGame .buttonTime {
+.app .results #gameCollection .singleGame .buttonNotSelected, .app .results #gameCollection .singleGame .buttonSelected {
   background-color: rgba(17, 17, 37, 0.877);
   border: 2px solid #bb2d44;
   height: 40px;
   width: 40px;
+  outline: none;
+}
+
+.app .results #gameCollection .singleGame .buttonSelected {
+  background-color: #bb2d44;
 }
 
 .app .gamePhoto {

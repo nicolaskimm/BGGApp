@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<script src="//unpkg.com/xdomain@0.8.2/dist/xdomain.min.js"></script>
 <html>
     <head>
         <title>Hurry up and play some board game!</title>
@@ -15,15 +16,16 @@
                     <h1> How many people?</h1>
                     <input class='players' placeholder='type the number'>
                     <button class='searchButton'> <i class="fas fa-search"></i> </button>
+                    <button class='clearSearch'><i class="fas fa-times"></i></button>
             </section>
             <section class='results'>
                 <div class='randomSection'>
                     <p class='paragraphRandom'>Pick something for me </p>
-                    <button class='randomButton'>></button>
+                    <i class="fas fa-dice random"></i>
                     <p>or maybe something you didn't play?</p>
-                    <button class='btnNotPlayed'>></button>
+                    <i class="fas fa-dice notPlayed"></i>
                 </div>
-                <p class='totalTime'>60 min</p>
+                <p class='totalTime'>0 min</p>
                 <ul id='gameCollection'></ul>
             </section>
         </div>  

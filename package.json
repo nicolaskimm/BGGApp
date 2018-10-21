@@ -4,12 +4,12 @@
   "description": "",
   "main": "script.js",
   "dependencies": {
-    "cors-anywhere": "^0.4.1",
-    "cors": "^2.8.4"
+    "cors-anywhere": "^0.4.1"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node node_modules/cors-anywhere/server.js"
   },
   "repository": {
     "type": "git",
