@@ -1,4 +1,4 @@
-var nickField, timeField, playersField, collecionField, buttonSearch, buttonRandom, itemsArray, fittingArray, buttonRandom, randomSection, paragraphSection;
+var nickField, timeField, playersField, collecionField, buttonSearch, buttonRandom, itemsArray, fittingArray, buttonRandom, randomSection, paragraphSection, loader;
 
 nickField = document.querySelector('.nick');
 timeField = document.querySelector('.time');
@@ -11,6 +11,7 @@ buttonNotPlayed = document.querySelector('.notPlayed');
 paragraphRandom = document.querySelector('.paragraphRandom');
 randomSection = document.querySelector('.randomSection');
 totalTime = document.querySelector('.totalTime');
+loader = document.querySelector('.loader');
 itemsArray = [];
 fittingArray = [];
 
@@ -20,6 +21,8 @@ var appBGG = (function() {
     init();
     
     buttonSearch.addEventListener('click', function(event){
+
+        loader.style.display = 'flex';
 
         var req, text, xmlDoc, items, timeInput, playersInput;
 
@@ -39,7 +42,7 @@ var appBGG = (function() {
         xmlDoc = parser.parseFromString(text, "text/xml");
         items = xmlDoc.getElementsByTagName("item"); 
         itemsArray.push(items);
-
+        loader.style.display = 'none';
         
         for (var i = 0 ; i < itemsArray[0].length-1 ; i ++) {
 

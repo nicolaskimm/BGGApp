@@ -1,2 +1,4 @@
 node_modules
 package-lock.json
+styles/style.css.map
+styles/style.scss

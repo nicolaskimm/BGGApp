@@ -69,6 +69,32 @@ body {
         align-items: center;
         width: 85vw;
 
+        .loader {
+            display: none;
+            justify-content: center;
+            margin-top: 100px;
+           
+            div {
+                width: 30px;
+                height: 30px;
+                background-color: $pinkyColor;
+                margin: 0 20px;
+                border-radius: 100%;
+            }
+
+            .loader_dot-1 {
+                animation: loader 1s ease-in-out 0s infinite;
+            }
+
+            .loader_dot-2 {
+                animation: loader 1s ease-in-out 0.2s infinite;
+            }
+
+            .loader_dot-3 {
+                animation: loader 1s ease-in-out 0.4s infinite;
+            }
+        }
+
         .randomSection {
             display: none;
             align-items: center;
@@ -151,5 +177,20 @@ body {
         width: 135px;
         margin-right: 20px;
     }
+}
+
+
+@keyframes loader {
+    0% {opacity: 1}
+    10% {opacity: 0.8}
+    20% {opacity: 0.6}
+    30% {opacity: 0.4}
+    40% {opacity: 0.2}
+    50% {opacity: 0}
+    60% {opacity: 0.2}
+    70% {opacity: 0.4}
+    80% {opacity: 0.6}
+    90% {opacity: 0.8}
+    100% {opacity: 1}
 }
 
